@@ -61,24 +61,21 @@ export default memo(function Home() {
     }
   };
 
-  const removeStation = useCallback(
-    (station_code) => {
-      const index = allStations.findIndex((item) => item === station_code);
-      allStations.splice(index, 1);
+  const removeStation = useCallback((station_code) => {
+    const index = allStations.findIndex((item) => item === station_code);
+    allStations.splice(index, 1);
 
-      // Not using filter because it will run upto n elements instead using FOR loop for getting first 30 elements.
-      // const first30stations = allStations.filter((item, index) => index < 30);
+    // Not using filter because it will run upto n elements instead using FOR loop for getting first 30 elements.
+    // const first30stations = allStations.filter((item, index) => index < 30);
 
-      let first30stations = [];
-      for (let i = 0; i < 30; i++) {
-        first30stations.push(allStations[i]);
-      }
-      setStationToShow(first30stations);
-      // after deleting a station smoothly scrolling window to top
-      window.scroll({ top: 0, behavior: "smooth" });
-    },
-    [allStations]
-  );
+    let first30stations = [];
+    for (let i = 0; i < 30; i++) {
+      first30stations.push(allStations[i]);
+    }
+    setStationToShow(first30stations);
+    // after deleting a station smoothly scrolling window to top
+    window.scroll({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <section className="home_container">
