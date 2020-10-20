@@ -17,7 +17,7 @@ export default memo(function Detail() {
   const getStationData = async () => {
     try {
       // i have used heroku here because detail api was showing cors issue => /utils/api.js
-      const { data } = await axios.get(`${api.detail.heroku}/${station_code}`);
+      const { data } = await axios.get(`${api.detail.base}/${station_code}/`);
       setDetails(data?.split("\n")?.flat()?.join(" ")?.split(" ") ?? []);
     } catch (err) {
       setDetails([]);
